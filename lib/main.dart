@@ -104,44 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: ListView.builder(
       itemCount: todos.length,
       itemBuilder: (context, index) {
-          return Slidable(
-              // Specify a key if the Slidable is dismissible.
-              key: const ValueKey(0),
-                // The end action pane is the one at the right or the bottom side.
-              endActionPane: ActionPane(
-                motion: ScrollMotion(),
-                children: [
-                  SlidableAction(
-                    onPressed: (BuildContext context){
-                                   // Change to edit mode
-
-                                  },
-                    backgroundColor: Color.fromARGB(255, 67, 107, 192),
-                    foregroundColor: Colors.white,
-                    icon: Icons.edit,
-                    label: 'Edit',
-                  ),
-                  SlidableAction(
-                    onPressed: (BuildContext context){
-                                    _removeTodo(index);
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        const SnackBar(
-                                          content: Text('Item deleted'),
-                                        ),
-                                      );
-                                  },
-                    backgroundColor: Color.fromARGB(255, 207, 3, 3),
-                    foregroundColor: Colors.white,
-                    icon: Icons.delete,
-                    label: 'Delete',
-                  ),
-                ],
-              ),
-
-              // The child of the Slidable is what the user sees when the
-              // component is not dragged.
-              child: ListTile(title: Text(todos[index])),
-            );
+          return _slideableActions(index);
       },
     )
             )
@@ -154,6 +117,47 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  Slidable _slideableActions(int index) {
+    return Slidable(
+            // Specify a key if the Slidable is dismissible.
+            key: const ValueKey(0),
+              // The end action pane is the one at the right or the bottom side.
+            endActionPane: ActionPane(
+              motion: ScrollMotion(),
+              children: [
+                SlidableAction(
+                  onPressed: (BuildContext context){
+                                 // Change to edit mode
+
+                                },
+                  backgroundColor: Color.fromARGB(255, 67, 107, 192),
+                  foregroundColor: Colors.white,
+                  icon: Icons.edit,
+                  label: 'Edit',
+                ),
+                SlidableAction(
+                  onPressed: (BuildContext context){
+                                  _removeTodo(index);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text('Item deleted'),
+                                      ),
+                                    );
+                                },
+                  backgroundColor: Color.fromARGB(255, 207, 3, 3),
+                  foregroundColor: Colors.white,
+                  icon: Icons.delete,
+                  label: 'Delete',
+                ),
+              ],
+            ),
+
+            // The child of the Slidable is what the user sees when the
+            // component is not dragged.
+            child: ListTile(title: Text(todos[index])),
+          );
   }
 }
 
