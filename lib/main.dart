@@ -127,12 +127,9 @@ class _MyHomePageState extends State<MyHomePage> {
             endActionPane: ActionPane(
               motion: ScrollMotion(),
               children: [
-                SlidableAction(
-                  onPressed: (BuildContext context){
-                                 // Change to edit mode
-
-                                },
-                  backgroundColor: Color.fromARGB(255, 67, 107, 192),
+                const SlidableAction(
+          onPressed: doNothing,
+                  backgroundColor: Color(0xFF0392CF),
                   foregroundColor: Colors.white,
                   icon: Icons.edit,
                   label: 'Edit',
@@ -146,7 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     );
                                 },
-                  backgroundColor: Color.fromARGB(255, 207, 3, 3),
+                  backgroundColor: Color(0xFFFE4A49),
                   foregroundColor: Colors.white,
                   icon: Icons.delete,
                   label: 'Delete',
@@ -211,12 +208,27 @@ class TodoList extends StatelessWidget {
 }
 
 void doNothing(BuildContext context) {
-  print(context.toString());
-  print('Hello');
-  ScaffoldMessenger.of(context).showSnackBar(
-    const SnackBar(
-      content: Text('Action Taken'),
-    ),
+  showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => Dialog(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text('This is a typical dialog.'),
+                    const SizedBox(height: 1),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Close'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
   );
 }
 
