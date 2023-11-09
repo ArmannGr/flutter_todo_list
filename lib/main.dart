@@ -132,7 +132,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                   });
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
-                                        duration: Duration(seconds: 30),
                                         content: Text('Item done'),
                                       ),
                                     );
@@ -174,7 +173,6 @@ class _MyHomePageState extends State<MyHomePage> {
                          _editTodo(index, editTodo.text);
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
-                                        duration: Duration(seconds: 30),
                                         content: Text('Item changed'),
                                       ),
                                     );
@@ -198,7 +196,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                   _removeTodo(index);
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
-                                        duration: Duration(seconds: 30),
                                         content: Text('Item deleted'),
                                       ),
                                     );
