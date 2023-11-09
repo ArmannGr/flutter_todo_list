@@ -12,11 +12,14 @@ A simple Todo List built with Flutter.
 
 ## Preview
 
+
+<p float="left">
 <img src="./img/starting-point.png" alt="Todo List Preview" width="250" height="500">
 
 <img src="./img/slide-right.png" alt="Slide to the right" width="250" height="500">
 
 <img src="./img/snackbars.png" alt="Snackbars" width="250" height="500">
+</p>
 
 <img src="./img/edit-delete.png" alt="Swipe left" width="250" height="500">
 
